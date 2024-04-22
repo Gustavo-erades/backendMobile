@@ -1,0 +1,14 @@
+<?php
+$anestesicoLocal=$dadosArray[0]['anestesicoLocal'];
+$doseMaxima=floatval($dadosArray[0]['doseMaxima']);
+$maximoAbsoluto=floatval($dadosArray[0]['maximoAbsoluto']);
+$numTubetes=floatval($dadosArray[0]['numTubetes']);
+$porcentagem=floatval($dadosArray[0]['porcentagem']);
+$arqArrayBd=array(
+    'anestesicoLocal'=>$anestesicoLocal,
+    'doseMaxima'=>$doseMaxima,
+    'maximoAbsoluto'=>$maximoAbsoluto,
+    'numTubetes'=>$numTubetes,
+    'porcentagem'=>$porcentagem,
+);
+$bancojson=json_encode($arqArrayBd);
