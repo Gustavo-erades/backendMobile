@@ -11,6 +11,5 @@ create table anestesicoTabela(
 insert into anestesicos.anestesicotabela(anestesicoLocal,doseMaxima,maximoAbsoluto,numTubetes,porcentagem) values("Lidocaína 3%",4.4,300,5.5,3);
 insert into anestesicos.anestesicotabela(anestesicoLocal,doseMaxima,maximoAbsoluto,numTubetes,porcentagem) values("Lidocaína 2%",4.4,300,8.3,2);
 insert into anestesicos.anestesicotabela(anestesicoLocal,doseMaxima,maximoAbsoluto,numTubetes,porcentagem) values("Mepivacaína 3%",4.4,300,5.5,3);
-insert into anestesicos.anestesicotabela(anestesicoLocal,doseMaxima,maximoAbsoluto,numTubetes,porcentagem) values("Lidocaína 2%",4.4,300,8.3,2);
 insert into anestesicos.anestesicotabela(anestesicoLocal,doseMaxima,maximoAbsoluto,numTubetes,porcentagem) values("Articaína 4%",7,500,6.9,4);
 insert into anestesicos.anestesicotabela(anestesicoLocal,doseMaxima,maximoAbsoluto,numTubetes,porcentagem) values("Bupivacaína 0.5%",1.3,90,10,0.5);
