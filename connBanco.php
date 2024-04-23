@@ -12,3 +12,4 @@ try {
     echo 'Erro de conexão com o banco de dados: ' . $erro->getMessage();
     exit;
 }
+/*$conn=mysqli_connect($host,$username,$password,$db_name);*/
