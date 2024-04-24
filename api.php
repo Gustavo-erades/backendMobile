@@ -17,6 +17,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = json_decode(file_get_contents('php://input'), true);
+    if (isset($data['peso']) && isset($data['quantMax']) && isset($data['volTubete'])) {
+        $peso = $data['peso']?$data['peso']:60;
+        $quantMax = $data['quantMax'];
+        $volTubete = $data['volTubete']?$data['volTubete']:1.8;
+        echo "peso: $peso, quantMax: $quantMax, volTubete: $volTubete, ";
+        /*$mlPorTubete=$porcentagem*10*$volTubete;
+        $maxDosePorPeso=$doseMaxima*$peso;
+        $quantTubete=floatval(number_format($maxDosePorPeso/$mlPorTubete,2));
+        $arqArray=array('mlPorTubete'=>$mlPorTubete,
+                            'maxDosePorPeso'=>$maxDosePorPeso,
+                            'quantTubete'=>$quantTubete);
+        $calculoJson= json_encode($arqArray);
+        $_SESSION['calculoJson']=$calculoJson;*/
+    }
+    if (isset($data['nomeAnestesico'])) {
+        $nomeAnestesicoArray = implode($data['nomeAnestesico']);
+        $nomeAnestesico=preg_replace('/\%\d+/', '%', $nomeAnestesicoArray);
+        echo "Anestésico Local: ".$nomeAnestesico."";
+    }
+}
 if($_SERVER['REQUEST_METHOD']=='GET'){
     if (isset($_GET['action'])) {
         if($_GET['action']=='boxCalculo'){
@@ -28,18 +50,3 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
         echo 'Método não permitido (GET)';
     }    
 }
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = json_decode(file_get_contents('php://input'), true);
-    if (isset($data['peso']) && isset($data['quantMax']) && isset($data['volTubete'])) {
-        $peso = $data['peso'];
-        $quantMax = $data['quantMax'];
-        $volTubete = $data['volTubete'];
-        echo "peso: $peso, quantMax: $quantMax, volTubete: $volTubete, ";
-    }
-    if (isset($data['nomeAnestesico'])) {
-        $nomeAnestesicoArray = implode($data['nomeAnestesico']);
-        $nomeAnestesico=preg_replace('/\%\d+/', '%', $nomeAnestesicoArray);
-        echo "Anestésico Local: ".$nomeAnestesico."";
-    }
-}
-

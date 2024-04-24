@@ -1,5 +1,5 @@
 <?php 
-$selectAnestesicos = $conn->query("SELECT * FROM anestesicoTabela WHERE anestesicoLocal='Bupivacaína 0.5%'");
+$selectAnestesicos = $conn->query("SELECT * FROM anestesicoTabela WHERE anestesicoLocal='Prilocaína 3%'");
 $anestesicosTabela = $selectAnestesicos->fetchAll(PDO::FETCH_ASSOC);
 $dadosBdJson=json_encode($anestesicosTabela);
 // separa os dados para efetuar o calculo
