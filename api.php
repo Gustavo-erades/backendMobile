@@ -12,9 +12,9 @@ include_once "varBanco.php";
 include_once "boxCalculo.php";
 // Definir cabeçalhos CORS 
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Origin: *"); // Permitir solicitações de qualquer origem
-header("Access-Control-Allow-Methods: POST, OPTIONS, GET"); // Permitir métodos POST, OPTIONS, GET
-header("Access-Control-Allow-Headers: Content-Type"); // Permitir cabeçalhos Content-Type
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, OPTIONS, GET");
+header("Access-Control-Allow-Headers: Content-Type");
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
@@ -83,6 +83,8 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
             echo $_SESSION['calculoJson'];
         }elseif($_GET['action']=='varBanco'){
             echo $_SESSION['bancojson'];
+        }elseif($_GET['action']=='nomeAnestesicoDropdown'){
+            echo $_SESSION['nomeAnestesico'];
         }
     } else {
         echo 'Método não permitido (GET)';
