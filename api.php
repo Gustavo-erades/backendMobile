@@ -36,8 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $maxDosePorPeso=floatval(number_format($quantMax*$_SESSION['pesoCalculoJson'],2));
         $quantTubete=intval(number_format($maxDosePorPeso/$mlPorTubete,1));
         echo "\n*** APÓS O CÁLCULO ***";
-        echo "ml por tubete: $mlPorTubete, quantidade de tubete: $quantTubete, mg por kg: $quantMax, máximo para o paciente: $maxDosePorPeso";
-        echo "*******************************";
+        echo "\nml por tubete: $mlPorTubete, quantidade de tubete: $quantTubete, mg por kg: $quantMax, máximo para o paciente: $maxDosePorPeso";
+        echo "\n*******************************";
         $arqArray=array('mlPorTubete'=>$mlPorTubete,
                             'maxDosePorPeso'=>$maxDosePorPeso,
                             'quantTubete'=>$quantTubete,
