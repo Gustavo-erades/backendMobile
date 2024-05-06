@@ -10,6 +10,7 @@ include_once "trataDados.php";
 include_once "varBanco.php";
 //importo as variáveis do cálculo $calculoJson
 include_once "boxCalculo.php";
+include_once "cadastrarAnestesico.php";
 // Definir cabeçalhos CORS 
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Origin: *");
@@ -83,6 +84,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
         $_SESSION['bancojson']=json_encode($arqArrayBd);
         $_SESSION['porcentagem']=$porcentagem;
+    }
+    if(isset($data['nome'])&&isset($data['doseMax'])&&isset($data['maxAbs'])&&isset($data['numTubete'])&&isset($data['porcentagem'])){
+        echo "Dados para cadastro recebidos com sucesso!\n";
+        echo "dados enviados: ".$data['nome'].", ".$data['doseMax'].", ".$data['maxAbs'].", ".$data['numTubete'].", ".$data['porcentagem']."";
+        $stmt = $conn->prepare("INSERT INTO anestesicos.anestesicotabela (anestesicoLocal, doseMaxima, maximoAbsoluto, numTubetes, porcentagem) VALUES (:nome, :doseMax, :maxAbs, :numTubete, :porcentagem)");
+        $stmt->bindParam(':nome', $data['nome']);
+        $stmt->bindParam(':doseMax', $data['doseMax']);
+        $stmt->bindParam(':maxAbs', $data['maxAbs']);
+        $stmt->bindParam(':numTubete', $data['numTubete']);
+        $stmt->bindParam(':porcentagem', $data['porcentagem']);
+        $stmt->execute();
     }
 }
 if($_SERVER['REQUEST_METHOD']=='GET'){
