@@ -10,7 +10,6 @@ include_once "trataDados.php";
 include_once "varBanco.php";
 //importo as variáveis do cálculo $calculoJson
 include_once "boxCalculo.php";
-include_once "cadastrarAnestesico.php";
 // Definir cabeçalhos CORS 
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Origin: *");
@@ -94,6 +93,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':maxAbs', $data['maxAbs']);
         $stmt->bindParam(':numTubete', $data['numTubete']);
         $stmt->bindParam(':porcentagem', $data['porcentagem']);
+        $stmt->execute();
+    }
+    if(isset($data['nomeRemover'])){
+        echo "\nDados para deleção recebidos com sucesso!\n";
+        echo "Nome do anestésico para deletar:".$data['nomeRemover']."";
+        $stmt = $conn->prepare('DELETE FROM anestesicos.anestesicotabela WHERE anestesicoLocal = :nomeRemover');
+        $stmt->bindParam(':nomeRemover', $data['nomeRemover']);
         $stmt->execute();
     }
 }
