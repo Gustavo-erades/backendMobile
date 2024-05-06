@@ -32,12 +32,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['quantMaxCalculoJson']=$quantMax;
         $_SESSION['volTubeteCalculoJson']=$volTubete;
         //sobrepõe o cálculo
-        $mlPorTubete=$porcentagem*10*$_SESSION['volTubeteCalculoJson'];
-        $maxDosePorPeso=floatval(number_format($doseMaxima*$_SESSION['pesoCalculoJson'],2));
-        $quantTubete=floatval(number_format($maxDosePorPeso/$mlPorTubete,2));
+        $mlPorTubete=floatval(number_format(($porcentagem*1000)/100,2))*number_format($_SESSION['volTubeteCalculoJson'],1);
+        $maxDosePorPeso=floatval(number_format($maxDosePorPeso*$_SESSION['pesoCalculoJson'],2));
+        $quantTubete=floatval(number_format($maxDosePorPeso/$mlPorTubete,1));
         $arqArray=array('mlPorTubete'=>$mlPorTubete,
                             'maxDosePorPeso'=>$maxDosePorPeso,
-                            'quantTubete'=>$quantTubete);
+                            'quantTubete'=>$quantTubete,
+                            'pesoPaciente'=>$_SESSION['pesoCalculoJson'],
+                            'volTubetePaciente'=>$_SESSION['volTubeteCalculoJson']
+    );
         $calculoJson= json_encode($arqArray);
         $_SESSION['calculoJson']=$calculoJson;
     }

@@ -8,6 +8,8 @@ create table anestesicoTabela(
     numTubetes decimal(5,2),
     primary key (id)
 );
+
+insert into anestesicos.anestesicotabela(anestesicoLocal,doseMaxima,maximoAbsoluto,numTubetes,porcentagem) values("Mepivacaína 2%",4.4,300,8.3,2);
 insert into anestesicos.anestesicotabela(anestesicoLocal,doseMaxima,maximoAbsoluto,numTubetes,porcentagem) values("Lidocaína 3%",4.4,300,5.5,3);
 insert into anestesicos.anestesicotabela(anestesicoLocal,doseMaxima,maximoAbsoluto,numTubetes,porcentagem) values("Lidocaína 2%",4.4,300,8.3,2);
 insert into anestesicos.anestesicotabela(anestesicoLocal,doseMaxima,maximoAbsoluto,numTubetes,porcentagem) values("Mepivacaína 3%",4.4,300,5.5,3);
