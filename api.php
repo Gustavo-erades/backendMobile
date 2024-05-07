@@ -111,8 +111,8 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
             echo $_SESSION['bancojson'];
         }elseif($_GET['action']=='nomeAnestesicoDropdown'){
             echo $_SESSION['nomeAnestesico'];
-        }
-    } else {
+        }else {
         echo 'Método não permitido (GET)';
     }    
+    }
 }
