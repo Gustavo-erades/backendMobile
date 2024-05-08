@@ -111,8 +111,27 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
             echo $_SESSION['bancojson'];
         }elseif($_GET['action']=='nomeAnestesicoDropdown'){
             echo $_SESSION['nomeAnestesico'];
+        }elseif($_GET['action']=='nomesDropdown'){
+            $procuraNomes = $conn->query("SELECT anestesicoLocal FROM anestesicos.anestesicoTabela;");
+            $anestesicosDrop = $procuraNomes->fetchAll(PDO::FETCH_ASSOC);
+            $dadosBdNomes=json_encode($anestesicosDrop);
+            echo "\tNOMES DO BANCO DE DADOS\n";
+            echo $dadosBdNomes;
+            $dadosNomesArray=json_decode($dadosBdNomes,true);
+            if ($dadosNomesArray === null && json_last_error() !== JSON_ERROR_NONE) {
+                echo "Erro ao decodificar o JSON: " . json_last_error_msg();
+            } else {
+                echo "\t\nTESTE\n";
+                $arrayTeste=[];
+                for($i=0;$i<count($dadosNomesArray);$i++){
+                    $arrayTeste[$i]=$dadosNomesArray[$i]['anestesicoLocal'];
+                    echo $arrayTeste[$i]."\n";
+                }
+                echo "\n*********************\n";
+            }
+            echo json_encode($arrayTeste);
         }else {
-        echo 'Método não permitido (GET)';
-    }    
+            echo 'Método não permitido (GET)';
+        }    
     }
 }
